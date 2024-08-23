@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.box {
+  flex: 1 1 calc(33.33% - 10px);
+  padding: 20px;
+  text-align: center;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .box {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    flex: 1 1 calc(100% - 10px);
+  }
+}
