@@ -2,9 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./ImageViewer.module.css";
 import { ColorRing } from "react-loader-spinner";
 import axios from "axios";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ImageViewer = () => {
-  const [images, setImages] = useState();
+  const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const loader = useRef(null);
@@ -18,7 +19,11 @@ const ImageViewer = () => {
         }&count=${10}`
       )
       .then((res) => setImages((prev) => [...prev, ...res.data]))
-      .finally(() => setLoading(false));
+      .finally(() =>
+        setTimeout(() => {
+          setLoading(false);
+        }, 1000)
+      );
   };
 
   useEffect(() => {
@@ -35,7 +40,7 @@ const ImageViewer = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
       root: null,
-      rootMargin: "20px",
+      rootMargin: "400px",
       threshold: 1.0,
     });
 
@@ -52,10 +57,17 @@ const ImageViewer = () => {
 
   return (
     <div className={styles.container}>
-      {images.map((imgs, i) => (
+      {images?.map((imgs, i) => (
         <div className={styles.box} data-testid={`item-${i + 1}`}>
-          <img height={220} src={imgs?.urls?.regular} alt="img" />
-          <div>{imgs?.slug}</div>
+          <a
+            href={imgs?.urls?.regular}
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: "none" }}
+          >
+            <LazyLoadImage height={220} src={imgs?.urls?.regular} alt="img" />
+          </a>
+          <title>{imgs?.slug}</title>
         </div>
       ))}
       {!loading ? (
