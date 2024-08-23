@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### How to run application
+
+Do - npm install
+
+then use app, it will automatically load images on scroll.
+
+only 50api calls are allowed per hour so sometimes image will not show if limit exceeds.
+
+I have added ErrorBoundary in this app so if any error occurs app will react accordingly.
+
+Added custom styles to make app responsive
+
+also added lazy loading to imporve app performance and image loading experience.

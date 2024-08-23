@@ -66,7 +66,12 @@ const ImageViewer = () => {
             rel="noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <LazyLoadImage height={220} src={imgs?.urls?.regular} alt="img" />
+            <LazyLoadImage
+              width={250}
+              height={250}
+              src={imgs?.urls?.regular}
+              alt="img"
+            />
           </a>
           <title>{imgs?.slug}</title>
         </div>
