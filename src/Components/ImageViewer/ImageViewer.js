@@ -50,6 +50,7 @@ const ImageViewer = () => {
 
     return () => {
       if (loader.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         observer.unobserve(loader.current);
       }
     };
